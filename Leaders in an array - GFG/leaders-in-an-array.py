@@ -1,12 +1,12 @@
 class Solution:
     def leaders(self, A, N):
-        A = A[::-1]
         Max = 0
         O = []
-        for i in A:
-            if i>=Max:
-                Max=i
-                O.append(i)
+        for i in range(1,N+1):
+            i = -i
+            if A[i]>=Max:
+                Max = A[i]
+                O.append(A[i])
         return O[::-1]
         
                 
