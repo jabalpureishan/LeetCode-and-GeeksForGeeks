@@ -1,4 +1,7 @@
 class Solution:
+    #Back-end complete function Template for Python 3
+    
+    #Function to find the leaders in the array.
     def leaders(self, A, N):
         Max = 0
         O = []
@@ -8,8 +11,6 @@ class Solution:
                 Max = A[i]
                 O.append(A[i])
         return O[::-1]
-        
-                
         
 
 
