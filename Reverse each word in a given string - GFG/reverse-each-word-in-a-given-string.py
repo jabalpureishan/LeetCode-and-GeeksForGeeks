@@ -2,12 +2,18 @@
 
 class Solution:
     def reverseWords(self, s):
-        s=s.split(".")
-        out = []
+        s += "."
+        output = ""
+        current = ""
         for i in s:
-            out.append(i[::-1])
-        s = ".".join(out)
-        return s
+            if i==".":
+                output += current[::-1] +"."
+                current = ""
+            else:
+                current += i
+        return output[:-1]
+                
+                
 
 
 #{ 
