@@ -1,10 +1,8 @@
 #User function Template for python3
-
+import math
 class Solution:
     def factorial(self, N):
-        for i in range(N-1,1,-1):
-            N *= i
-        return str(N)
+        return str(math.factorial(N))
 
 
 #{ 
