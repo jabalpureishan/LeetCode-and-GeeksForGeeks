@@ -2,23 +2,15 @@ from collections import OrderedDict
 def encode(arr):
     arr = arr + "$"
     out = ""
-    first = arr[0]
+    current = arr[0]
     count = 0
     for i in range(len(arr)):
-        current = arr[i]
-        #print("current:",current)
-        
-        #print("arr[i]",arr[i])
-        if arr[i]==first:
-            #print("same and count++")
+        if arr[i]==current:
             count += 1
         else:
-            #print("not same")
-            out += first + str(count)
-            #print("out:",out)
-            first = current
+            out += current + str(count)
+            current = arr[i]
             count = 1
-            #print("first changed to:",first)
     return out
         
 
