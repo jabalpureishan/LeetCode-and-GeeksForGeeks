@@ -1,0 +1,1 @@
+        print(f"Inp[i] : {Inp[i]} Inp[i+1] : {Inp[i+1]}")
