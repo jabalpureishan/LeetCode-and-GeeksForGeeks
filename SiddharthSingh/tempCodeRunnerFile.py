@@ -1,1 +1,0 @@
-print(ord(str(0)))
