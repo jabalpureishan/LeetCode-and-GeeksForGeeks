@@ -1,0 +1,10 @@
+word=str(input("enter string : "))
+Rep=str(input("enter letter to replace: "))
+replacement=str(input("enter replacement : "))
+str = word
+new_word=str.replace(Rep,replacement)
+print(new_word)
+print(str.strip())
+print(str.upper())
+print(str.lower())
+print(str.split("h"))

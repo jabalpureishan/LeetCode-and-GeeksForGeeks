@@ -1,0 +1,6 @@
+a=int(input("input:\n"))
+b=int(input(""))
+print(f"output:\nsum=",a+b)
+print(f"sub=",a-b)
+print(f"mul=",a*b)
+print("div=",a/b)

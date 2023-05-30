@@ -1,0 +1,7 @@
+a,b= input(" Enter Numbers : ").split()
+a,b= int(a),int(b)
+print("Bitwise OR : ", a|b)
+print("Bitwise AND : ", a&b)
+print("Bitwise XOR : ", a^b)
+print("Bitwise LS : ", a<<b)
+print("Bitwise RS : ", a>>b)
