@@ -19,19 +19,22 @@ class Solution:
             else:
                 if first!=last:
                     substrings.append([first,last])
+                    break
                 #if((last-first)>(Max[1]-Max[0])):
                     #Max = [first,last]
                     #print("max updated",Max)
                 first,last = i+1,i+1
                 #print("reset:",first,last)
-        for i in substrings:
-            current = ""
-            for j in range(i[0],i[1]):
-                current += chr(ord(s[j])-1)
-            current = s[:i[0]] + current + s[i[1]:length]
+        #print(substrings)
+        #for i in substrings:
+        current = ""
+        for j in range(substrings[0][0],substrings[0][1]):
+            #print("j",j)
+            current += chr(ord(s[j])-1)
+        current = s[:substrings[0][0]] + current + s[substrings[0][1]:length]
             #print("current",current)
-            Max = min(Max,current)
-        return Max
+            #Max = min(Max,current)
+        return current
 
                 
         
