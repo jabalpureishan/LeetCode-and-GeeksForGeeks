@@ -5,8 +5,9 @@ class Solution:
         Max = -1
         Min = 10**5 + 2
         for i in range(n):
-            Max = max(a[i]-i,Max)
-            Min = min(a[i]-i,Min)
+            current = a[i] - i
+            Max = max(current,Max)
+            Min = min(current,Min)
         return Max - Min
         
 
