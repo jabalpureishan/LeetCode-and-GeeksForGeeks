@@ -5,6 +5,5 @@ class Solution:
             pick = nums[i]
             if pick in n:
                 return [n[pick],i]
-            else:
-                n[target-pick] = i
-        return []
+            n[target-pick] = i
+        #return []
