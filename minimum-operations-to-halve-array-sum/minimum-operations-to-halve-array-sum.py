@@ -1,12 +1,15 @@
-from sortedcontainers import SortedList
+import heapq
 class Solution:
     def halveArray(self, nums: List[int]) -> int:
         half = sum(nums)/2
-        nums = SortedList(nums)
+        heap = []
+        heapq.heapify(heap)
+        for i in nums:
+            heappush(heap,-1*i)
         count,current = 0,0
         while(current<half):
-            current += nums[-1]/2
+            current += (-1*heap[0])/2
             count += 1
-            nums.add(nums[-1]/2)
-            nums.discard(nums[-1])
-        return count  
+            heappush(heap,heap[0]/2)
+            heappop(heap)
+        return count   
