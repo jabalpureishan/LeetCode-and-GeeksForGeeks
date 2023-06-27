@@ -3,17 +3,25 @@ class Solution:
         a = 0
         b = len(s)-1
         while(a<b):
-            #print("s[a]:",s[a],"s[b]",s[b])
-            if not s[a].isalnum():
-                a += 1
-                continue
-                #print("a",a)
-            if not s[b].isalnum():
-                b -= 1
-                continue
-                #print("b",b)
-            
-            if s[a].lower()!=s[b].lower():
+            curra = s[a]
+            currb = s[b]
+            chra = ord(curra)
+            chrb = ord(currb)
+            if chra not in range(65,91):
+                if chra not in range(97,123):
+                     if chra not in range(48,58):
+                        a += 1
+                        continue
+            else:
+                curra = chr(chra+32)
+            if chrb not in range(65,91):
+                if chrb not in range(97,123):
+                    if chrb not in range(48,58):
+                        b -= 1
+                        continue
+            else:
+                currb = chr(chrb+32)
+            if curra!=currb:
                 return False
             a+=1
             b-=1
