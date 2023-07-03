@@ -1,7 +1,11 @@
 #User function Template for python3
-class Solution:
 
-	def maxIndexDiff(self,arr,n):
+class Solution:
+    #Complete this function
+    # Function to find the maximum index difference.
+    def maxIndexDiff(self,A, N): 
+        arr = A
+        n = N
         d = {}
         for i in range(n):
             if arr[i] in d:
@@ -19,12 +23,24 @@ class Solution:
 
 #{ 
  # Driver Code Starts
+#Initial Template for Python 3
+
+import math
+
+def main():
+        T=int(input())
+        while(T>0):
+            
+            n=int(input())
+            
+            arr=[int(x) for x in input().strip().split()]
+            ob=Solution()
+            print(ob.maxIndexDiff(arr,n))
+            
+            
+            T-=1
+
+
 if __name__ == "__main__":
-	t = int(input())
-	while(t>0):
-		num = int(input())
-		arr = [int(x) for x in input().strip().split()]
-		ob = Solution()
-		print(ob.maxIndexDiff(arr,num))
-		t-=1
+    main()
 # } Driver Code Ends
