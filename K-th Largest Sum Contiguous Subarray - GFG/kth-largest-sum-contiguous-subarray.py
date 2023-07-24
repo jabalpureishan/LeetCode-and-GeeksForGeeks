@@ -1,21 +1,23 @@
 from typing import List
-
+from heapq import heapify,heappop,heappush
 
 class Solution:
     def kthLargest(self, N : int, K : int, Arr : List[int]) -> int:
-        out = []
+        heap = []
+        heapify(heap)
         for i in range(1,N+1):
             window = i
             slides = N - window
             Sum = sum(Arr[:window])
-            out.append(Sum)
+            heappush(heap,-Sum)
             for j in range(slides):
                 Sum += Arr[window]
                 Sum -= Arr[j]
                 window += 1
-                out.append(Sum)
-        out.sort(reverse=True)
-        return out[K-1]
+                heappush(heap,-Sum)
+        for i in range(K):
+            Ans = heappop(heap)
+        return -Ans
         
 
 
