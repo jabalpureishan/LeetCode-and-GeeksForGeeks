@@ -1,7 +1,7 @@
 class Solution:
     def beautySum(self, s: str) -> int:
         total = 0
-        for i in range(2,len(s)+1):
+        for i in range(3,len(s)+1):
             d = {}
             for j in s[:i]:
                 d[j] = d.get(j,0) +1
