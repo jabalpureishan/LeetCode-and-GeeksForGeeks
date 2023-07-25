@@ -1,20 +1,27 @@
-from sortedcontainers import SortedList
+
 class Solution:
     def peakIndexInMountainArray(self, arr: List[int]) -> int:
-        length = len(arr)
-        l = SortedList([])
-        r = SortedList(arr[1:])
+        right,LMax,RMax,length = {},-1,-1,len(arr)
+        for i in arr[1:]:
+            RMax = max(RMax,i)
+            right[i] = right.get(i,0) + 1
         for i in range(length):
+            #print("i:",i)
+            #print("right:",right,"RM",RMax)
+            #print("left:",LMax)
             if i==0:
-                if arr[i]>(r[-1]):
+                if arr[0]>RMax:
                     return 0
-                l.add(arr[i])
-                r.remove(arr[i+1])
             elif i==length-1:
-                if arr[length-1]>(l[-1]):
+                if arr[-1]>LMax:
                     return i
             else:
-                if arr[i]>(r[-1]) and arr[i]>(l[-1]) :
+                right[arr[i]] -= 1
+                if right[arr[i]]==0:
+                    right.pop(arr[i])
+                    if arr[i]==RMax:
+                        RMax = max(right)
+                if arr[i]>LMax and arr[i]>RMax:
                     return i
-                l.add(arr[i])
-                r.remove(arr[i+1])
+
+            LMax = max(LMax,arr[i])
