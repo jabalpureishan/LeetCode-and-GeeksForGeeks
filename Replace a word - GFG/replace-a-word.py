@@ -1,13 +1,23 @@
 #User function Template for python3
 class Solution:
     def replaceAll (ob, S, oldW, newW):
-        S = S.split(oldW)
-        ans = S[0]
-        for i in range(1,len(S)):
-            ans += newW
-            ans += S[i]
-        #ans +=  S[-1]
-        return ans 
+        newl = len(newW)
+        length = len(S)
+        ind = 0
+        window = len(oldW)
+        #print("kya?")
+        while(ind<length):
+            #print(S[ind:ind+window])
+            if S[ind:ind+window]==oldW:
+                #print("equal")
+                S = S[:ind] + newW + S[ind+window:]
+                ind += newl
+                length += newl
+                #print("new ind:",ind)
+                #print("new S:",S)
+            else:
+                ind += 1
+        return S
 
 
 #{ 
