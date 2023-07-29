@@ -1,8 +1,13 @@
 #User function Template for python3
 class Solution:
     def replaceAll (ob, S, oldW, newW):
-        S = S.replace(oldW,newW)
-        return S
+        S = S.split(oldW)
+        ans = S[0]
+        for i in range(1,len(S)):
+            ans += newW
+            ans += S[i]
+        #ans +=  S[-1]
+        return ans 
 
 
 #{ 
