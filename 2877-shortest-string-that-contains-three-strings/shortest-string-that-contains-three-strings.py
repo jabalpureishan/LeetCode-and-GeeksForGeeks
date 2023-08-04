@@ -11,19 +11,6 @@ class Solution:
             else:
                 first += second
             return first
-        results = [
-            merge(merge(a,b),c),
-            merge(merge(a,c),b),
-            merge(merge(b,a),c),
-            merge(merge(b,c),a),
-            merge(merge(c,a),b),
-            merge(merge(c,b),a),
-        ]
-        #print("res",results)
-        Minlength = len(min(results,key=lambda x:len(x)))
-        out = []
-        for i in results:
-            if len(i)==Minlength:
-                out.append(i)
-        #print(out)
+        results = (merge(merge(a,b),c),merge(merge(a,c),b),merge(merge(b,a),c), merge(merge(b,c),a),merge(merge(c,a),b),merge(merge(c,b),a),)
+        out = tuple(filter(lambda x:len(x)==(len(min(results,key=lambda x:len(x)))),results))
         return min(out)
