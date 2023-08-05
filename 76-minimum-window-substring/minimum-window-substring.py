@@ -1,42 +1,30 @@
 from collections import Counter
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
-        if len(t)>len(s):
-            return ""
         p = t
-        d,left,Min,Minl,c = {},0,"##",float("inf"),{}
+        if len(p)>len(s):
+            return ""
+        ds,dp,left,have,Min,Minl = {},{},0,0,"#",float("inf")
         for i in p:
-            d[i] = 0
-            c[i] = c.get(i,0) + 1
-        def check(c,d):
-            for i in d:
-                if d[i]<c[i]:
-                    return False
-            return True
-        #print("initial:",d)
+            dp[i] = dp.get(i,0) + 1
+            ds[i] = 0
+        need = len(dp)
         for right in range(len(s)):
-            #print("curr:",s[right])
-            if s[right] in d:
-                #print("in d")
-                d[s[right]] += 1
-            #print("befor:",s[left:right+1])
-            #print("before:",d)
-
-            while(check(c,d)):
-                #print("while chalu")
+            i = s[right]
+            if i in ds:
+                ds[i] += 1
+                if ds[i]==dp[i]:
+                    have += 1
+            while(have==need):
                 if right-left+1<Minl:
-                    Minl = right - left + 1
+                    Minl = right-left+1
                     Min = s[left:right+1]
-                if s[left] in d:
-                    d[s[left]] -= 1
+                j = s[left]
+                if j in ds:
+                    ds[j] -= 1
+                    if ds[j]<dp[j]:
+                        have -= 1
                 left += 1
-
-
-                
-
-                
-            #print("after:",s[left:right+1])
-            
-        if Min =="##":
+        if Min=="#":
             return ""
         return Min
