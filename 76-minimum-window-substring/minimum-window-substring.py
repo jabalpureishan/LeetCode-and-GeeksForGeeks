@@ -1,5 +1,4 @@
-from sys import stdin
-input = stdin.readline
+
 from collections import Counter
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
