@@ -1,16 +1,14 @@
-#User function template for Python
-from collections import OrderedDict
+
 class Solution:	
 	def remove_duplicate(self, A, N):
+        ind = 1
+        while(ind<len(A)):
+            if A[ind]==A[ind-1]:
+                A.pop(ind-1)
+            else:
+                ind += 1
         
-        d = OrderedDict({})
-        for i in A:
-            d[i] = 0
-        A.clear()
-        for i in d:
-            A.append(i)
         return len(A)
-
 
 #{ 
  # Driver Code Starts
