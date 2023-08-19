@@ -5,8 +5,8 @@ class Solution:
         while(left<right):
             Sum = nums[left] + nums[right]
             if Sum<target:
+                count += right - left
                 left += 1
-                count += right - left + 1
             else:
                 right -= 1
         return count
