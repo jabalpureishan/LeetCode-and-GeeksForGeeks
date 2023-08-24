@@ -3,15 +3,15 @@
 class Solution:
     def countPairs(self,a, n, k): 
         a.sort()
-        left,count = 0,0
-        for right in range(1,n):
+        left,right,count = 0,1,0
+        while(right<n):
             diff = a[right] - a[left]
-            #print("diff:",diff)
-            while(diff>=k):
+            if diff>=k:
                 left += 1
                 diff = a[right] - a[left]
-            #print(a[left:right+1])
-            count += right - left
+            else:
+                count += right - left
+                right += 1
         return count
 
 
