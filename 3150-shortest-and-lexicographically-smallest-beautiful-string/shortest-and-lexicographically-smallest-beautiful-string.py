@@ -7,20 +7,17 @@ class Solution:
         for right in range(length):
             if s[right]=="1":
                 one += 1
-            while one>k :
+            while (one>k or s[left]!="1") and left<right:
                 if s[left]=="1":
                     one -= 1
                 left += 1
-            #print(s[left:right+1])
-            curr = s[left:right+1].strip("0")
-            #print("curr:",curr)
             if one==k:
-                lenc = len(curr)
-                if lenc<Min:
-                    Min = lenc
-                    ans = curr
-                elif lenc==Min:
-                    ans = min(ans,curr)
+                curr = right - left + 1
+                if curr==Min:
+                    ans = min(ans,s[left:right+1])
+                elif curr<Min:
+                    Min = curr
+                    ans = s[left:right+1]
                     
         if Min == float("inf"):
             return ""
