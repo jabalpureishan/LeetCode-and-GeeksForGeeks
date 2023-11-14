@@ -5,7 +5,8 @@ class Solution:
             ans = n+1
             count = 2
             i = 2
-            while i<=sqrt(n):
+            root = sqrt(n)
+            while i<=root:
                 if n%i==0:
                     ans += i
                     count += 1
