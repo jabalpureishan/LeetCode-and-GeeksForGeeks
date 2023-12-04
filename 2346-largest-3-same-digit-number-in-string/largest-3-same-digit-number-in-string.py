@@ -4,7 +4,7 @@ class Solution:
         Max = ""
         for i in range(length-2):
             curr = num[i:i+3]
-            if len(set(curr))==1:
+            if curr[0]==curr[1]==curr[2]:
                 Max = max(Max,curr)
         return Max
 
