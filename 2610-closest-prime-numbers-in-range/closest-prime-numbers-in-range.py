@@ -22,6 +22,8 @@ class Solution:
                 if prev!=0 and i-prev<Min:
                     Min = i-prev
                     ans = [prev,i]
+                    if Min in {1,2}:
+                        return ans
                 prev = i
         return ans
     
