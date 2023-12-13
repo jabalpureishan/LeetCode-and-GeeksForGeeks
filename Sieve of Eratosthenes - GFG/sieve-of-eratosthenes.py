@@ -1,21 +1,22 @@
 #User function Template for python3
-
+from math import sqrt
 class Solution:
     def sieveOfEratosthenes(self, N):
-        def isprime(n):
-            if n==2 or n==3:
-                return True
-            if n==1 or n%2==0 or n%3==0:
-                return False
-    
-            i= 5
-            while i*i<=n:
-                if n%i==0 or n%(i+2)==0:
-                    return False
-                i += 6
-            return True
+        arr = [False]*2+[True]*(N-1)
+        root = sqrt(N)
+        i = 2
+        ans = []
+        while i<=N:
+            if arr[i]:
+                ans.append(i)
+                for j in range(i*i,N+1,i):
+                    arr[j] = False
+            i += 1
+        return ans
+        
 
-        return list(filter(lambda x:isprime(x),range(1,N+1))) 
+
+
 
 
 #{ 
