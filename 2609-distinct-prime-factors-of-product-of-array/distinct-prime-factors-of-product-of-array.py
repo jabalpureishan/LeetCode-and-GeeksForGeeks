@@ -13,7 +13,7 @@ class Solution:
                             arr[j] = i
                 i += 1
             return arr
-        arr = fsieve(1000)
+        arr = fsieve(max(nums))
         def primefacts(n,set_):
             while n!=1:
                 set_.add(arr[n])
