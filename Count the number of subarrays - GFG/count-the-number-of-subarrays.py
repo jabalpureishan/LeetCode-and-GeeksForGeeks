@@ -1,16 +1,16 @@
 #User function Template for python3
 class Solution:
     def countSubarray(self, N, A, L, R):
-        def count(N,A,K):
-            left = Sum = total = 0
-            for right in range(N):
-                Sum += A[right]
-                while(Sum>K):
-                    Sum -= A[left]
+        def sub(n,nums,k):
+            left = sum_ = count = 0
+            for right in range(n):
+                sum_ += nums[right]
+                while sum_>k:
+                    sum_ -= nums[left]
                     left += 1
-                total += right -left + 1
-            return total
-        return count(N,A,R) - count(N,A,L-1)
+                count += right - left + 1
+            return count
+        return sub(N,A,R)- sub(N,A,L-1)
 
 
 #{ 
