@@ -1,15 +1,17 @@
 class Solution:
     def findMatrix(self, nums: List[int]) -> List[List[int]]:
-        d = {}
-        for i in nums:
-            d[i] = d.get(i,0) + 1
+        d = Counter(nums)
         ans = []
-        while set(d.values())!={0} :
+        while len(d)>0 :
+            nikal = set()
             curr = []
             for i in d:
-                if d[i]!=0:
-                    curr.append(i)
-                    d[i] -= 1
+                curr.append(i)
+                d[i] -= 1
+                if d[i]==0:
+                    nikal.add(i)
             ans.append(curr)
+            for i in nikal:
+                d.pop(i)
         return ans
         
