@@ -1,16 +1,13 @@
 class Solution:
     def findLeastNumOfUniqueInts(self, arr: List[int], k: int) -> int:
-        hashmap = {}
-        for i in arr:
-            hashmap[i] = hashmap.get(i,0) + 1
-        hashmap = sorted(hashmap.items(),key=lambda x:x[1])
-        actual = len(hashmap)
-        length = len(hashmap)
-        #print(hashmap)
-        ind = 0
-        while(k>0 and ind<actual):
-            k -= hashmap[ind][1]
-            if k>=0:
-                length -= 1
+        arr = Counter(arr)
+        arr = sorted(arr.items(),key=lambda x:x[1])
+        n,ind = len(arr),0
+        while ind<len(arr) and k>0:
+            if k<arr[ind][1]:
+                break
+            else:
+                k -= arr[ind][1]
+                n -= 1
             ind += 1
-        return length
+        return n
