@@ -1,14 +1,8 @@
 class Solution:
     def numSubarraysWithSum(self, nums: List[int], goal: int) -> int:
-        def count(nums,k):
-            if k<0:
-                return 0
-            left,total,Sum = 0,0,0
-            for right in range(len(nums)):
-                Sum += nums[right]
-                while(Sum>k):
-                    Sum -= nums[left]
-                    left += 1
-                total += right - left + 1
-            return total
-        return count(nums,goal) - count(nums,goal-1)
+        sum_,d,count = 0,{0:1},0
+        for i in nums:
+            sum_ += i
+            count += d.get(sum_-goal,0)
+            d[sum_] = d.get(sum_,0) + 1
+        return count
