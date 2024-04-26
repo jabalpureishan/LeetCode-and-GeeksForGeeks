@@ -1,9 +1,9 @@
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
-        hmap = {0:1}
-        sum_ = count = 0
-        for i in nums:
-            sum_ += i
-            count += hmap.get(sum_-k,0)
-            hmap[sum_] = hmap.get(sum_,0) + 1
-        return count
+        d,sum_,ans = {0:1},0,0
+        for ind,val in enumerate(nums):
+            sum_ += val
+            curr = sum_ - k
+            ans += d.get(curr,0)
+            d[sum_] = d.get(sum_,0) + 1
+        return ans
