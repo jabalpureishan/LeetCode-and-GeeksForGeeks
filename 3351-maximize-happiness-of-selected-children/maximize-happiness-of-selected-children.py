@@ -1,16 +1,7 @@
 class Solution:
     def maximumHappinessSum(self, happiness: List[int], k: int) -> int:
-        heap = []
-        heapify(heap)
+        happiness.sort(reverse=True)
         ans = 0
-        for i in happiness:
-            heappush(heap,i)
-            if len(heap)>k:
-                heappop(heap)
-        for i in range(k-1,-1,-1):
-            curr = max(0,heappop(heap)-i)
-            print(curr)
-            ans += curr
+        for i in range(k):
+            ans += max(0,happiness[i]-i)
         return ans
-
-        
