@@ -1,14 +1,15 @@
 from sortedcontainers import SortedList
 class Solution:
     def trap(self, height: List[int]) -> int:
-        LMax = 0
-        n = len(height)
-        RMax = SortedList(height)
+        prefix,suffix,p,s,n = [],deque([]),0,0,len(height)
+        for i in range(n):
+            p = max(p,height[i])
+            prefix.append(p)
+            s = max(s,height[-(i+1)])
+            suffix.appendleft(s)
+        #return prefix,suffix
         total = 0
-        for i in height:
-            RMax.remove(i)
-            if len(RMax)>0:
-                total += max(0,min(RMax[-1],LMax) - i)
-            LMax = max(LMax,i)
+        for i in range(n):
+            total += max(0,min(prefix[i],suffix[i])-height[i])
         return total
             
