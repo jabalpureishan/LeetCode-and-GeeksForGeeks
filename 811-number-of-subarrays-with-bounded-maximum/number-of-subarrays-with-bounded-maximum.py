@@ -1,14 +1,15 @@
 class Solution:
     def numSubarrayBoundedMax(self, nums: List[int], left: int, right: int) -> int:
         def count(nums,k):
-            nums.append(float("inf"))
-            total = count = 0
-            for i in range(len(nums)):
-                if nums[i]<=k:
-                    count += 1
+            ans = l = 0
+            nums.append(nums[-1]+k)
+            for i in nums:
+                if i>k:
+                    ans += (l*(l+1))//2
+                    l = 0
                 else:
-                    total += (count*(count+1))//2
-                    count = 0
-            return total
+                    l += 1
+            return ans
 
-        return count(nums,right) - count(nums,left-1)
+        return count(nums,right)-count(nums,left-1)
+        
