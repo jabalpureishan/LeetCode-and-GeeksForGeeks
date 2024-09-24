@@ -1,14 +1,15 @@
 #User function Template for python3
 class Solution:
-    def print2largest(self, arr):
-        Max = SMax = -1
+    def getSecondLargest(self, arr):
+        Max = -1
+        sMax = -1
         for i in arr:
             if i>Max:
-                SMax = Max
+                sMax = Max
                 Max = i
-            elif Max>i>SMax:
-                SMax = i
-        return SMax
+            if Max>i>sMax:
+                sMax = i
+        return sMax
 
 
 #{ 
@@ -20,7 +21,7 @@ if __name__ == "__main__":
     for _ in range(t):
         arr = list(map(int, input().split()))
         ob = Solution()
-        ans = ob.print2largest(arr)
+        ans = ob.getSecondLargest(arr)
         print(ans)
 
 # } Driver Code Ends
