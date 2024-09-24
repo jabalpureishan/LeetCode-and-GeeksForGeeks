@@ -4,13 +4,10 @@ from typing import List
 
 class Solution:
     def largest(self, arr : List[int]) -> int:
-        n = len(arr)
-        for i in range(n):
-            for j in range(i+1,n):
-                if arr[j]>arr[i]:
-                    break
-            else: return arr[i]
-
+        Max = arr[0]
+        for i in range(1,len(arr)):
+            Max = max(Max,arr[i])
+        return Max
         
 
 
