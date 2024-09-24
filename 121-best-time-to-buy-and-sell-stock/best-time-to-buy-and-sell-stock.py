@@ -1,9 +1,9 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        Min,Max = prices[0],0
-        n = len(prices)
-        for i in range(1,n):
-            Max = max(Max,prices[i]-Min)
-            Min = min(prices[i],Min)
+        arr =prices
+        Max,Min = 0,arr[0]
+        for i in arr:
+            Min = min(Min,i)
+            Max = max(Max,i-Min)
         return Max
         
