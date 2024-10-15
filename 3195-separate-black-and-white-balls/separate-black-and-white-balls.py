@@ -1,8 +1,15 @@
 class Solution:
     def minimumSteps(self, s: str) -> int:
-        ind,n,ans = 0,len(s),0
-        for i in range(n):
-            if s[i]=="0":
-                ans += i-ind
+        a,count = list(s),0
+        ind = 0
+        while ind<len(s) and s[ind]!="1":
+            ind += 1
+
+        for i in range(ind+1,len(s)):
+            if a[i]=="0":
+                a[i],a[ind] = a[ind],a[i]
+                count += i-ind
                 ind += 1
-        return ans
+                
+        return count
+        
