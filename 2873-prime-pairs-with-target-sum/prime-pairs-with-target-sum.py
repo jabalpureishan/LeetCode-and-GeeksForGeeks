@@ -1,25 +1,24 @@
 class Solution:
     def findPrimePairs(self, n: int) -> List[List[int]]:
-        prime,ans = [False,False]+[True]*n,[]
+        prime,ans = [False,False]+[True]*(n-1),[]
         i = 2
         while i*i<=n:
             if prime[i]:
                 for j in range(i*i,n+1,i):
                     prime[j] = False
             i += 1
-        for ind,val in enumerate(prime):
-            if val==True and ind<=n: ans.append(ind)
-        left,right = 0,len(ans)-1
+        l,r = 0,n
         res = []
-        while left<=right:
+        while l<=r:
             #print(ans[left]+ans[right])
-            if ans[left]+ans[right]<n:
-                left += 1
-            elif ans[left]+ans[right]>n:
-                right -= 1
+            if l+r<n:
+                l += 1
+            elif l+r>n:
+                r -= 1
             else:
-                res.append([ans[left],ans[right]])	
-                left += 1
-                right -= 1
+                if prime[l] and prime[r]:
+                    res.append([l,r])	
+                l += 1
+                r -= 1
         return res
             
